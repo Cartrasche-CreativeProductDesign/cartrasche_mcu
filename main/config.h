@@ -69,6 +69,10 @@
 #define LED_PIN      53
 #define NUMPIXELS    12 
 #define PIXEL_DELAY  100
+
+#define STRIP_PIN1   49 // LEFT
+#define STRIP_PIN2   51 // RIGHT
+#define NUM_STRIP    30
 /////////////////////////////////////////////
 
 /////////////// SERVO CONFIG /////////////////
