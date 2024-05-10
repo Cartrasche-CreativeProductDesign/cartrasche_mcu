@@ -30,14 +30,6 @@ void setupPheris()
   pinMode(BOT2TOP, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   initializeLED();
-  delay(500);
-  show_white(0);
-  delay(500);
-  show_white(100);
-  delay(500);
-  show_white(0);
-  delay(500);
-  show_white(100);
 }
 
 void setup()

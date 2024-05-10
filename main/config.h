@@ -9,14 +9,17 @@
 #include <std_msgs/String.h>
 #include <std_msgs/Empty.h>
 #include <geometry_msgs/Twist.h>
+
 #include <SoftwareSerial.h>
 #include <Adafruit_NeoPixel.h>
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
 ////////////////////////////////////////////////
 
 ///////////////// ROBOT CONFIG /////////////////
 #define WHEEL_RAD     0.056 // m
 #define PI            3.1415926535897932384626433832795
-#define TWOPIRAD      0.352
+#define TWOPIRAD      0.351858377
 #define WHEELBASE     0.3228
 #define VEL_MAX       30 // m/s
 #define ANG_MAX       30 // deg
@@ -58,8 +61,9 @@
 #define MID2TOP          A0
 #define BOT2TOP          A1
 #define upcount           6
+const long int rotatecount=92000;
 #define STEPS_PER_REV  1000 // 1/8 step mode shall be  // 1000 , 1 uc -> 5mm
-#define STEPS_PER_REV2 1600
+#define STEPS_PER_REV2 1000
 /////////////////////////////////////////////
 
 ////////////// ARDUINO CONFIG ///////////////

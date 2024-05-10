@@ -105,7 +105,7 @@ void turn_off_motor()
 }
 
 int calculateSPeed(float linVel){
-  float calc = ((linVel*300)/(TWOPIRAD)-50)/29+153;
+  float calc = (((linVel*300)/TWOPIRAD)-50)/29+153;
   int AnalogOut = int(trunc(calc));
   return AnalogOut;
 }
@@ -113,12 +113,12 @@ int calculateSPeed(float linVel){
 int calculateAngle(float angVel){
   if(angVel>0){
     // 계산 다시
-    float calc = ((300*angVel*WHEELBASE)/(2*TWOPIRAD) - 50)/29 + 153;
+    float calc = (((300*angVel*WHEELBASE)/(2*TWOPIRAD)) - 50)/29 + 153;
     int AnalogOut = int(trunc(calc));
     return AnalogOut;
   }
   else{
-    float calc = 102 - ((300*abs(angVel)*WHEELBASE)/(2*TWOPIRAD) - 50)/29;
+    float calc = 102 - (((300*abs(angVel)*WHEELBASE)/(2*TWOPIRAD)) - 50)/29;
     int AnalogOut = int(trunc(calc));
     return AnalogOut;
   }

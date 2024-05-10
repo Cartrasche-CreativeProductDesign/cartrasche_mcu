@@ -6,7 +6,7 @@
 
 int step = 0;
 int stepDelayShort = 350;
-int stepDelay = 1200;
+int stepDelay = 50;
 int a = 0;
 
 // button state
@@ -53,7 +53,7 @@ void spinDown(){
 // rotate top stepper once
 void rotateTop(){
   digitalWrite(STEP_DIR_TOP, HIGH);
-  for(int i  = 0; i < STEPS_PER_REV2; i++){
+  for(long int i  = 0; i < rotatecount; i++){ //rotatecount*STEPS_PER_REV2
     digitalWrite(STEP_STEP_TOP, HIGH);
     delayMicroseconds(stepDelay);
     digitalWrite(STEP_STEP_TOP, LOW);
@@ -64,7 +64,7 @@ void rotateTop(){
 // rotate bottom stepper once
 void rotateBot(){
   digitalWrite(STEP_DIR_BOT, HIGH);
-  for(int i  = 0; i < STEPS_PER_REV2; i++){
+  for(long int i  = 0; i < rotatecount; i++){
     digitalWrite(STEP_STEP_BOT, HIGH);
     delayMicroseconds(stepDelay);
     digitalWrite(STEP_STEP_BOT, LOW);

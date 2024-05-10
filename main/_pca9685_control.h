@@ -1,5 +1,6 @@
-#include <Wire.h>
-#include <Adafruit_PWMServoDriver.h>
+#ifndef _PCA9685_CONTROL_H
+#define _PCA9685_CONTROL_H
+
 #include "config.h"
 int servoTflag = 0;
 int servoBflag = 0;
@@ -14,8 +15,6 @@ void initializeServo(){
 
 int angleToPulse(int ang){  
     int pulse = map(ang,0, 180, SERVOMIN,SERVOMAX);  // map angle of 0 to 180 to Servo min and Servo max 
-    Serial.print("Angle: ");Serial.print(ang);
-    Serial.print(" pulse: ");Serial.println(pulse);
     return pulse;
 }
 
@@ -40,3 +39,5 @@ void rotateBotServo(){
         int servoBflag = 0;
     }    
 }
+
+#endif
