@@ -31,7 +31,7 @@ void initialize_bldc()
 void fb_control(int dir, int speed)
 {
   if(speed>250){
-    speed = 250;
+    speed = 155;
   }
   current_fb_speed = speed;
 
@@ -60,7 +60,7 @@ void lr_control(int speed)
 {
   // Turn motor on
   if(speed>250){
-    speed = 250;
+    speed = 155;
   }
   current_lr_speed = speed;
 
