@@ -19,18 +19,23 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
   float linx = cmd_vel.linear.x;
   float angz = cmd_vel.angular.z;
  
-  // int spd = calculateSPeed(abs(linx));
+  // int spd = calculateSpeed(abs(linx));
+  ////////////// MODIFIED //////////////
+  int spd = 125;
+  //////////////////////////////////////
   int ang = calculateAngle(angz);
   
 
   if(linx > 0.0){
-    if(linx < 3.0){
-      int spd = calculateSPeed(0.01);
+    n.loginfo("linear fwd");
+    ////////////// MODIFIED //////////////
+    if(linx<0.3){
+      spd = calculateSpeed(0.07);
     }
     else{
-      int spd = calculateSPeed(abs(linx)-3.0);
+      spd = calculateSpeed(abs(linx));
     }
-    n.loginfo("linear fwd");
+    //////////////////////////////////////
     fb_control(0, spd);
     delay(10);
     if(abs(angz) > 0.0){
@@ -40,13 +45,15 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
     }
   }
   else if(linx < 0.0){
-    if(abs(linx) < 3.0){
-      int spd = calculateSPeed(0.01);
+    n.loginfo("linear bwd");
+    ////////////// MODIFIED //////////////
+    if(abs(linx)<0.3){
+      spd = calculateSpeed(0.07);
     }
     else{
-      int spd = calculateSPeed(abs(linx)-3.0);
+      spd = calculateSpeed(abs(linx));
     }
-    n.loginfo("linear bwd");
+    //////////////////////////////////////
     fb_control(1, spd);
     delay(10);
     if(abs(angz) > 0.0){

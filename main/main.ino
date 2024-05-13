@@ -59,7 +59,6 @@ void loop()
   
   n.spinOnce();
   delay(500);
-  show_violet(100);
 
   int M2T_bs = digitalRead(MID2TOP);
   int B2T_bs = digitalRead(BOT2TOP);

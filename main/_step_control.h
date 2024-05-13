@@ -9,10 +9,6 @@ int stepDelayShort = 350;
 int stepDelay = 50;
 int a = 0;
 
-// button state
-int M2T_bs = 0;
-int B2T_bs = 0;
-
 void initialize_steppers(){
   pinMode(STEP_DIR, OUTPUT);
   pinMode(STEP_STEP, OUTPUT);

@@ -64,6 +64,10 @@
 const long int rotatecount=92000;
 #define STEPS_PER_REV  1000 // 1/8 step mode shall be  // 1000 , 1 uc -> 5mm
 #define STEPS_PER_REV2 1000
+
+// button state
+int M2T_bs = 0;
+int B2T_bs = 0;
 /////////////////////////////////////////////
 
 ////////////// ARDUINO CONFIG ///////////////
