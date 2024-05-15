@@ -8,6 +8,7 @@
 
 // SUbscriber Declaration
 ros::Subscriber<geometry_msgs::Twist> subCmdVel("cmd_vel", &cmdvelCallback );
+ros::Subscriber<std_msgs::Int32> subStopVel("stop_vel", &stopCallback );
 ros::Subscriber<std_msgs::Int32> subSwitch("switch_tray", &stCallback );
 // Publisher Declaration
 char hb[18] = "arduino heartbeat";
@@ -42,6 +43,7 @@ void setup()
   n.advertise(rosduino);
   n.subscribe(subCmdVel);
   n.subscribe(subSwitch);
+  n.subscribe(subStopVel);
 
   n.advertise(current_fb_speed_pub);
   n.advertise(current_lr_speed_pub);
@@ -58,7 +60,7 @@ void loop()
   current_lr_speed_pub.publish(&int_msg);
   
   n.spinOnce();
-  delay(500);
+  delay(200);
 
   int M2T_bs = digitalRead(MID2TOP);
   int B2T_bs = digitalRead(BOT2TOP);

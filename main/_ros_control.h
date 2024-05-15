@@ -10,6 +10,13 @@ ros::Publisher rosduino("rosduino", &str_msg);
 char cmdvelcallback[18] = "rcvd cmdvel";
 char stcallback[18] = "rcvd st";
 
+void stopCallback(const std_msgs::Int32& stop_vel){
+  if(stop_vel.data == 1){
+    n.loginfo("stop");
+    turn_off_motor();
+    delay(10);
+  }
+}
 
 // Subscriber Callbacks
 void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
