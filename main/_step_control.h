@@ -38,7 +38,18 @@ void spinUp(){
 // let down the link
 void spinDown(){
   digitalWrite(STEP_DIR, HIGH);
-  for(int i  = 0; i < upcount*STEPS_PER_REV; i++){
+  for(int i  = 0; i < 6*STEPS_PER_REV; i++){
+    digitalWrite(STEP_STEP, HIGH);
+    delayMicroseconds(stepDelayShort);
+    digitalWrite(STEP_STEP, LOW);
+    delayMicroseconds(stepDelayShort);
+  }
+}
+
+//half step
+void spinDownLit(){
+  digitalWrite(STEP_DIR, HIGH);
+  for(int i  = 0; i < 2*STEPS_PER_REV; i++){
     digitalWrite(STEP_STEP, HIGH);
     delayMicroseconds(stepDelayShort);
     digitalWrite(STEP_STEP, LOW);
@@ -50,6 +61,16 @@ void spinDown(){
 void rotateTop(){
   digitalWrite(STEP_DIR_TOP, HIGH);
   for(long int i  = 0; i < rotatecount; i++){ //rotatecount*STEPS_PER_REV2
+    digitalWrite(STEP_STEP_TOP, HIGH);
+    delayMicroseconds(stepDelay);
+    digitalWrite(STEP_STEP_TOP, LOW);
+    delayMicroseconds(stepDelay);
+  }
+}
+
+void rotateTopManual(){
+  digitalWrite(STEP_DIR_TOP, HIGH);
+  for(long int i  = 0; i < 200; i++){ //rotatecount*STEPS_PER_REV2
     digitalWrite(STEP_STEP_TOP, HIGH);
     delayMicroseconds(stepDelay);
     digitalWrite(STEP_STEP_TOP, LOW);
@@ -70,9 +91,12 @@ void rotateBot(){
 
 void mid2top(){
   spinUp();
-  delay(200);
+  delay(100);
   rotateTop();
-  delay(200);
+  delay(100);
+  spinDownLit();
+  delay(100);
+  rotateTop();
   spinDown();
   show_white(100);
 }

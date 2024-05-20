@@ -60,8 +60,8 @@
 
 #define MID2TOP          A0
 #define BOT2TOP          A1
-#define upcount           6
-const long int rotatecount=92000;
+#define upcount           8
+const long int rotatecount=45600;//92000
 #define STEPS_PER_REV  1000 // 1/8 step mode shall be  // 1000 , 1 uc -> 5mm
 #define STEPS_PER_REV2 1000
 

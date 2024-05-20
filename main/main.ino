@@ -47,6 +47,7 @@ void setup()
 
   n.advertise(current_fb_speed_pub);
   n.advertise(current_lr_speed_pub);
+  rotateTopManual();
 }
 
 void loop()
@@ -60,7 +61,7 @@ void loop()
   current_lr_speed_pub.publish(&int_msg);
   
   n.spinOnce();
-  delay(200);
+  delay(100);
 
   int M2T_bs = digitalRead(MID2TOP);
   int B2T_bs = digitalRead(BOT2TOP);
