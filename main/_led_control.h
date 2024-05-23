@@ -83,6 +83,15 @@ void show_white(int brightness){
   return;
 }
 
+void show_pink(){
+  for(int i=0;i<NUMPIXELS;i++){
+    pixels.setPixelColor(i,pixels.Color(255,178,245)); 
+  }
+  pixels.show(); //update hardware with RGB color set
+  delay(PIXEL_DELAY);
+  return;
+}
+
 void turn_off_led(){
   pixels.clear();
   pixels.show();
@@ -92,22 +101,22 @@ void turn_off_led(){
 /////////////////////////////////////////////////////////////////////////
 
 //////////////////////////// FRONT KKAMBBAKGI ///////////////////////////
-// void strip1_control(int r, int g, int b){
-//   for(int i=0;i<NUMPIXELS;i++){
-//     strip1.setPixelColor(i,strip1.Color(r,g,b)); 
-//   }
-//   strip1.show(); //update hardware with RGB color set
-//   delay(1000);
-//   return;
-// }
+void strip1_control(int r, int g, int b){
+  for(int i=0;i<NUMPIXELS;i++){
+    strip1.setPixelColor(i,strip1.Color(r,g,b)); 
+  }
+  strip1.show(); //update hardware with RGB color set
+  delay(1000);
+  return;
+}
 
-// void strip2_control(int r, int g, int b){
-//   for(int i=0;i<NUMPIXELS;i++){
-//     strip2.setPixelColor(i,strip2.Color(r,g,b)); 
-//   }
-//   strip2.show(); //update hardware with RGB color set
-//   delay(1000);
-//   return;
-// }
+void strip2_control(int r, int g, int b){
+  for(int i=0;i<NUMPIXELS;i++){
+    strip2.setPixelColor(i,strip2.Color(r,g,b)); 
+  }
+  strip2.show(); //update hardware with RGB color set
+  delay(1000);
+  return;
+}
 /////////////////////////////////////////////////////////////////////////
 #endif

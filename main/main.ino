@@ -3,7 +3,6 @@
 #include "_step_control.h"
 #include "_led_control.h"
 // #include "_motor_control.h"
-// #include "_pca9685_control.h"
 #include "_ros_control.h"
 
 // SUbscriber Declaration
@@ -33,8 +32,16 @@ void setupPheris()
   initializeLED();
 }
 
+void setupRegister(){
+  int myEraser = 7; // this is 111 in binary and is used as an eraser
+  TCCR4B &= ~myEraser; // this operation (AND plus NOT), set the three bits in TCCR2B to 0
+  int myPrescaler = 1; // this could be a number in [1 , 6]. In this case, 3 corresponds in binary to 011.
+  TCCR4B |= myPrescaler; //this operation (OR), replaces the last three bits in TCCR2B with our new value 011
+}
+
 void setup()
 { 
+  setupRegister();
   setupMotors();  
   setupPheris();
   // ROSSERIAL with Jetson
@@ -47,7 +54,7 @@ void setup()
 
   n.advertise(current_fb_speed_pub);
   n.advertise(current_lr_speed_pub);
-  rotateTopManual();
+//  rotateTopManual();/
 }
 
 void loop()

@@ -30,7 +30,7 @@ void initialize_bldc()
 // 153 ~250 : bwd => FORWARD
 void fb_control(int dir, int speed)
 {
-  if(speed>250){
+  if(speed>200){
     speed = 155;
   }
   current_fb_speed = speed;
@@ -67,6 +67,12 @@ void lr_control(int speed)
   digitalWrite(START_STOP1, LOW);
   digitalWrite(START_STOP2, LOW);
   show_green(100);
+  if(speed>150){
+    strip1_control(0,0,255);
+  }
+  else if(speed<110){
+    strip2_control(0,0,255);
+  }
 
   analogWrite(SPEED_IN2, speed);
 }
@@ -74,7 +80,7 @@ void lr_control(int speed)
 
 void turn_off_motor()
 { 
-  show_red(100);
+  show_pink();
   while(((current_fb_speed < 100) || (current_fb_speed > 150)) || ((current_lr_speed < 103) || (current_lr_speed > 152))){ // if the motor is moving in any way,
     if(current_fb_speed < 100){ // if moving forward 
       current_fb_speed += 5;
