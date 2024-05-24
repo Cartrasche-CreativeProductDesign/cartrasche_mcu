@@ -37,8 +37,8 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
   if(linx > 0.0){
     n.loginfo("linear fwd");
     ////////////// MODIFIED //////////////
-    if(linx<0.3){
-      spd = calculateSpeed(0.07);
+    if(linx<0.1){
+      spd = calculateSpeed(0.03);
     }
     else{
       spd = calculateSpeed(abs(linx));
@@ -53,14 +53,14 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
       delay(10);
     }
     else{
-      lr_control(stopvel);
+//      lr_control(stopvel);
     }
   }
   else if(linx < 0.0){
     n.loginfo("linear bwd");
     ////////////// MODIFIED //////////////
-    if(abs(linx)<0.3){
-      spd = calculateSpeed(0.07);
+    if(abs(linx)<0.1){
+      spd = calculateSpeed(0.03);
     }
     else{
       spd = calculateSpeed(abs(linx));
@@ -75,12 +75,13 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
       delay(10);
     }
     else{
-      lr_control(stopvel);
+//      lr_control(stopvel);
     }
   }
   else{
     n.loginfo("linear zero");
     if(abs(angz) > 0.0){
+      ang = calculateAngle(angz);
       n.loginfo("angular_3");
       lr_control(ang);
       delay(10);

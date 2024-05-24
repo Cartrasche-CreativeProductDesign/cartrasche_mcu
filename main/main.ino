@@ -51,10 +51,9 @@ void setup()
   n.subscribe(subCmdVel);
   n.subscribe(subSwitch);
   n.subscribe(subStopVel);
-
   n.advertise(current_fb_speed_pub);
   n.advertise(current_lr_speed_pub);
-//  rotateTopManual();/
+
 }
 
 void loop()
