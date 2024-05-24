@@ -1,4 +1,4 @@
-# cartrasche_atmega2560
+# cartrasche_mcu
 Cartrasche motors and peripherals driver with rosserial enabled
 
 ![cartrasche_logo](https://github.com/Cartrasche-CreativeProductDesign/cartrasche_dev/assets/68832065/74af2a03-79aa-4e0f-a699-e39b201d271c)
@@ -10,9 +10,13 @@ Cartrasche motors and peripherals driver with rosserial enabled
 - ADAFRUIT | PCA9685 12-channel PWM Driver
 - ADAFRUIT | NEOPIXEL 12 LED_RING
 
+## Remote Emergency Stop
+- LOLIN | ESP32 D32 PRO
+
 ## ROSSERIAL-ATMEGA
 **ARDUINO MEGA**
 - Subscribe : /cmd_vel  [geometry_msgs::Twist] -> linear.x, angular.z
 - Subscribe : /switch_tray [std_msgs::Int32] -> 1 or 2
 - Publish   : /rosduino [std_msgs::String] -> callback msg for received topic
 - Publish   : /heartbeat [std_msgs::String] -> heartbeat
+

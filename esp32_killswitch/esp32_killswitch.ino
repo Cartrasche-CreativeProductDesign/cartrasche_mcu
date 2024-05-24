@@ -2,22 +2,41 @@
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <WiFiClient.h>
+#include "config.h"
 
-#define buttonPin 25
-
-const char* ssid = "cartrasche";
-const char* password = "cart1234";
-
-const char* mqtt_server = "192.168.0.4"; // MQTT broker IP 
-const int mqtt_port = 1883; // MQTT port 1883
-const char* mqtt_topic = "kill";
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 char buffer[16];
+int state = 0;
 
+memset(buffer, 0x00, sizeof(buffer));
 WiFiClient espClient; 
 PubSubClient client(espClient);
 
+void resetDisplay(){
+    display.clearDisplay();
+    display.setCursor(0, 0);
+    display.setTextSize(1);
+}
+
+void setupOLED(){
+    if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+        Serial.println(F("SSD1306 allocation failed"));
+        for (;;);
+    }
+    display.clearDisplay();
+
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(4, 25);
+    display.println("** Begin CARTRASCHE **");
+    display.display();
+    delay(2000);
+}
+
 void setup_wifi() {
-  delay(10);
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -54,19 +73,28 @@ void reconnect() {
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
+      Serial.println(" try again in 3 seconds");
+      delay(3000);
     }
   }
 }
 
 void setup() {
   Serial.begin(115200);
+  setupOLED()
   setup_wifi();
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
   pinMode(buttonPin, INPUT);
 
+  resetDisplay();
+  display.setCursor(0, 24);
+  display.setTextSize(1);
+  display.println("E-STOP READY");
+  display.print("IP address: ");
+  display.println(WiFi.localIP());
+  display.println("Press to Stop!!");
+  display.display();
 }
 
 void loop() {
@@ -78,9 +106,11 @@ void loop() {
   int state = digitalRead(buttonPin);
   Serial.println(state);
   if(state){
-    memset(buffer, 0x00, sizeof(buffer));
+    resetDisplay();
     sprintf(buffer, "kill");
-    Serial.println("kill");
+    display.setCursor(4, 24);
+    display.setTextSize(2);
+    Serial.println("E-Stop Activated");
     client.publish(mqtt_topic, buffer);
   }
   delay(100);
