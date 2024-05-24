@@ -67,7 +67,7 @@ void loop()
   current_lr_speed_pub.publish(&int_msg);
   
   n.spinOnce();
-  delay(100);
+  delay(200);
 
   int M2T_bs = digitalRead(MID2TOP);
   int B2T_bs = digitalRead(BOT2TOP);
