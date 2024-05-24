@@ -24,6 +24,10 @@
 #define VEL_MAX       30 // m/s
 #define ANG_MAX       30 // deg
 #define EPSILON       0.000001
+#define LIN_VEL_BASE  140
+#define ANG_POS_BASE  138
+#define ANG_NEG_BASE  111
+#define GRATIO_PARAM  1200
 ////////////////////////////////////////////////
 
 ////////////////// BLDC MOTOR //////////////////

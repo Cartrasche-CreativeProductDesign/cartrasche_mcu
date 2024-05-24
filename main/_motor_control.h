@@ -111,19 +111,19 @@ void turn_off_motor()
 }
 
 int calculateSpeed(float linVel){
-  float calc = (((linVel*1200)/TWOPIRAD)-50)/90+140; // 29
+  float calc = (((linVel*GRATIO_PARAM)/TWOPIRAD)-50)/60+LIN_VEL_BASE; // 29
   int AnalogOut = int(trunc(calc));
   return AnalogOut;
 }
 
 int calculateAngle(float angVel){
   if(angVel<0){
-    float calc = 108 - (((1200*abs(angVel)*WHEELBASE)/(2*TWOPIRAD)) - 50)/15;
+    float calc = ANG_NEG_BASE - (((GRATIO_PARAM*abs(angVel)*WHEELBASE)/(2*TWOPIRAD)) - 50)/15;
     int AnalogOut = int(trunc(calc));
     return AnalogOut;
   }
   else{
-    float calc = (((1200*angVel*WHEELBASE)/(2*TWOPIRAD)) - 50)/15 + 138;
+    float calc = (((GRATIO_PARAM*angVel*WHEELBASE)/(2*TWOPIRAD)) - 50)/15 + ANG_POS_BASE;
     int AnalogOut = int(trunc(calc));
     return AnalogOut;
   }
