@@ -28,9 +28,10 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
  
   // int spd = calculateSpeed(abs(linx));
   ////////////// MODIFIED //////////////
-  int spd = 125;
+  int spd = 123;
   //////////////////////////////////////
-  int ang = calculateAngle(angz);
+  int ang = 123;
+  int stopvel = 123;
   
 
   if(linx > 0.0){
@@ -45,10 +46,14 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
     //////////////////////////////////////
     fb_control(0, spd);
     delay(10);
-    if(abs(angz) > 0.0){
+    if(abs(angz) > 0.1){
+      ang = calculateAngle(angz);
       n.loginfo("angular_1");
       lr_control(ang);
       delay(10);
+    }
+    else{
+      lr_control(stopvel);
     }
   }
   else if(linx < 0.0){
@@ -63,10 +68,14 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
     //////////////////////////////////////
     fb_control(1, spd);
     delay(10);
-    if(abs(angz) > 0.0){
+    if(abs(angz) > 0.1){
+      ang = calculateAngle(angz);
       n.loginfo("angular_2");
       lr_control(ang);
       delay(10);
+    }
+    else{
+      lr_control(stopvel);
     }
   }
   else{

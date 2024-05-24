@@ -13,7 +13,7 @@
 #include <SoftwareSerial.h>
 #include <Adafruit_NeoPixel.h>
 #include <Wire.h>
-#include <Adafruit_PWMServoDriver.h>
+// #include <Adafruit_PWMServoDriver.h>
 ////////////////////////////////////////////////
 
 ///////////////// ROBOT CONFIG /////////////////
