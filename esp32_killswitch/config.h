@@ -10,8 +10,8 @@
 #define uS_TO_S_FACTOR 1000000ULL
 #define TIME_TO_SLEEP  3600   
 
-const char* ssid = "cartrasche";
-const char* password = "cart1234";
+const char* ssid = "cartrasche"; //"U+Net850C";
+const char* password = "cart1234"; //"C87568BJ$F";
 
 const char* mqtt_server = "192.168.0.4"; // MQTT broker IP 
 const int mqtt_port = 1883; // MQTT port 1883

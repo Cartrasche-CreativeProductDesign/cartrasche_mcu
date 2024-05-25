@@ -93,18 +93,18 @@ void setup() {
   Serial.begin(115200);
   setupOLED();
   setup_wifi();
-//  client.setServer(mqtt_server, mqtt_port);
-//  client.setCallback(callback);
+  client.setServer(mqtt_server, mqtt_port);
+  client.setCallback(callback);
   pinMode(buttonPin, INPUT_PULLUP);
   resetDisplay();
   memset(buffer, 0x00, sizeof(buffer));
 }
 
 void loop() {
-//  if (!client.connected()) {
-//    reconnect();
-//  }
-//  client.loop();
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
   defaultDisplay();
   int state = digitalRead(buttonPin);
   Serial.println(state);
