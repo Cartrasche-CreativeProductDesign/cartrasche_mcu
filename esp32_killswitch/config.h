@@ -1,4 +1,4 @@
-#define buttonPin 25
+#define buttonPin 23
 #define LED_BUILTIN 5
 #define RUNNING_CORE 1
 #define BASE_CORE 0
