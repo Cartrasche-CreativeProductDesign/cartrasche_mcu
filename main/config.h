@@ -25,8 +25,8 @@
 #define ANG_MAX       30 // deg
 #define EPSILON       0.000001
 #define LIN_VEL_BASE  140
-#define ANG_POS_BASE  146
-#define ANG_NEG_BASE  113
+#define ANG_POS_BASE  149
+#define ANG_NEG_BASE  112
 #define GRATIO_PARAM  1200
 ////////////////////////////////////////////////
 
@@ -84,7 +84,7 @@ int B2T_bs = 0;
 
 #define STRIP_PIN1   49 // LEFT
 #define STRIP_PIN2   51 // RIGHT
-#define NUM_STRIP    30
+#define NUM_STRIP    18
 /////////////////////////////////////////////
 
 /////////////// SERVO CONFIG /////////////////

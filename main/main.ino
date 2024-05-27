@@ -30,6 +30,7 @@ void setupPheris()
   pinMode(BOT2TOP, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   initializeLED();
+  initializeSTRIPS();
 }
 
 void setupRegister(){

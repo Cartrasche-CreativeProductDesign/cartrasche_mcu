@@ -67,13 +67,6 @@ void lr_control(int speed)
   digitalWrite(START_STOP1, LOW);
   digitalWrite(START_STOP2, LOW);
   show_green(100);
-  if(speed>150){
-    strip1_control(0,0,255);
-  }
-  else if(speed<110){
-    strip2_control(0,0,255);
-  }
-
   analogWrite(SPEED_IN2, speed);
 }
 
