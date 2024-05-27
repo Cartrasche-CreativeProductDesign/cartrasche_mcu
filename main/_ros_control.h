@@ -2,6 +2,7 @@
 #define _ROS_CONTROL_H
 #include "config.h"
 #include "_motor_control.h"
+#include "_led_control.h"
 
 // ROS usage
 ros::NodeHandle n;
@@ -53,19 +54,17 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
       delay(10);
     }
     else{
-//      lr_control(stopvel);
+      indicFWD();
     }
   }
   else if(linx < 0.0){
     n.loginfo("linear bwd");
-    ////////////// MODIFIED //////////////
     if(abs(linx)<0.1){
       spd = calculateSpeed(0.03);
     }
     else{
       spd = calculateSpeed(abs(linx));
     }
-    //////////////////////////////////////
     fb_control(1, spd);
     delay(10);
     if(abs(angz) > 0.1){
@@ -75,7 +74,7 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
       delay(10);
     }
     else{
-//      lr_control(stopvel);
+      indicBWD();
     }
   }
   else{

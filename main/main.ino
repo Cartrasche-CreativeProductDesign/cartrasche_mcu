@@ -2,7 +2,7 @@
 #include "config.h"
 #include "_step_control.h"
 #include "_led_control.h"
-// #include "_motor_control.h"
+#include "_motor_control.h"
 #include "_ros_control.h"
 
 // SUbscriber Declaration
