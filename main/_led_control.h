@@ -160,11 +160,13 @@ void indicLEFT(){
   strip1.clear();
   strip2.clear();
   strip1_control(100,100,100,0,NUM_STRIP);
+  strip2.show();
 }
 
 void indicRIGHT(){
   strip1.clear();
   strip2.clear();
+  strip1.show();
   strip2_control(100,100,100,0,NUM_STRIP);
 }
 

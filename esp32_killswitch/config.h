@@ -13,6 +13,6 @@
 const char* ssid = "cartrasche"; //"U+Net850C";
 const char* password = "cart1234"; //"C87568BJ$F";
 
-const char* mqtt_server = "192.168.0.4"; // MQTT broker IP 
+const char* mqtt_server = "192.168.0.2"; // MQTT broker IP 
 const int mqtt_port = 1883; // MQTT port 1883
 const char* mqtt_topic = "kill";

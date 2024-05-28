@@ -81,7 +81,7 @@ void rotateTopManual(){
 // rotate bottom stepper once
 void rotateBot(){
   digitalWrite(STEP_DIR_BOT, HIGH);
-  for(long int i  = 0; i < rotatecount; i++){
+  for(long int i  = 0; i < rotatecount*2; i++){
     digitalWrite(STEP_STEP_BOT, HIGH);
     delayMicroseconds(stepDelay);
     digitalWrite(STEP_STEP_BOT, LOW);
