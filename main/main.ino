@@ -30,7 +30,7 @@ void setupPheris()
   pinMode(BOT2TOP, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   initializeLED();
-  initializeSTRIPS();
+  //initializeSTRIPS();
 }
 
 void setupRegister(){
@@ -54,7 +54,9 @@ void setup()
   n.subscribe(subStopVel);
   n.advertise(current_fb_speed_pub);
   n.advertise(current_lr_speed_pub);
-
+//  spinDown();
+//  rotateTopManual();
+//  spinDownLit();
 }
 
 void loop()

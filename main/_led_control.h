@@ -7,8 +7,8 @@
 #endif
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, LED_PIN, NEO_GRBW + NEO_KHZ800);
-Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(NUM_STRIP, STRIP_PIN1, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUM_STRIP, STRIP_PIN2, NEO_GRB + NEO_KHZ800);
+//Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(NUM_STRIP, STRIP_PIN1, NEO_GRB + NEO_KHZ800);
+//Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUM_STRIP, STRIP_PIN2, NEO_GRB + NEO_KHZ800);
 
 
 void initializeLED(){
@@ -24,7 +24,7 @@ void initializeLED(){
 ///////////////////// MAIN CENTER LED RING //////////////////////////
 void show_red(int brightness){
   for(int i=0;i<NUMPIXELS;i++){
-    pixels.setPixelColor(i,pixels.Color(brightness,0,0)); 
+    pixels.setPixelColor(i,pixels.Color(brightness,20, 40)); 
   }
   pixels.show(); //update hardware with RGB color set
   delay(PIXEL_DELAY);
@@ -93,13 +93,14 @@ void turn_off_led(){
 }
 /////////////////////////////////////////////////////////////////////////
 
+/*
 //////////////////////////// FRONT KKAMBBAKGI ///////////////////////////
 void strip1_control(int r, int g, int b, int rangeI, int rangeF){
   for(int i=rangeI;i<rangeF;i++){
     strip1.setPixelColor(i,strip1.Color(r,g,b)); 
   }
   strip1.show();
-  delay(10);
+  delay(PIXEL_DELAY);
   return;
 }
 
@@ -108,21 +109,21 @@ void strip2_control(int r, int g, int b, int rangeI, int rangeF){
     strip2.setPixelColor(i,strip2.Color(r,g,b)); 
   }
   strip2.show();
-  delay(10);
+  delay(PIXEL_DELAY);
   return;
 }
 
 void turn_off_strip1(){
   strip1.clear();
   strip1.show();
-  delay(PIXEL_DELAY);
+  delay(50);
   return;
 }
 
 void turn_off_strip2(){
   strip2.clear();
   strip2.show();
-  delay(PIXEL_DELAY);
+  delay(50);
   return;
 }
 
@@ -136,8 +137,6 @@ void initializeSTRIPS(){
     strip2.show();
   }
   delay(1000);
-  turn_off_strip1();
-  turn_off_strip2();
 }
 /////////////////////////////////////////////////////////////////////////
 
@@ -170,4 +169,5 @@ void indicRIGHT(){
   strip2_control(100,100,100,0,NUM_STRIP);
 }
 
+*/
 #endif

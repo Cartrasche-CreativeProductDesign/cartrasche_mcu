@@ -54,7 +54,7 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
       delay(10);
     }
     else{
-      indicFWD();
+      //indicFWD(); //////////////////////////////////////
     }
   }
   else if(linx < 0.0){
@@ -74,7 +74,7 @@ void cmdvelCallback(const geometry_msgs::Twist& cmd_vel){
       delay(10);
     }
     else{
-      indicBWD();
+      //indicBWD(); //////////////////////////////////////////
     }
   }
   else{
