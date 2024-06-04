@@ -56,6 +56,7 @@ void setup()
   n.advertise(current_lr_speed_pub);
 //  spinDown();
 //  rotateTopManual();
+//  rotateBotManual();
 //  spinDownLit();
 }
 

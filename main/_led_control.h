@@ -15,7 +15,7 @@ void initializeLED(){
   pixels.begin();
 
   for(int i=0;i<NUMPIXELS;i++){
-    pixels.setPixelColor(i,pixels.Color(100,100,100));
+    pixels.setPixelColor(i,pixels.Color(80,80,80));
     pixels.show();
     delay(200);
   }
